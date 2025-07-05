@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GATE CSE</title>
+</head>
+<style>
+    *{
+        font-family: calibri;
+        overflow-x: hidden;
+    }
+
+    a{
+        text-decoration: none;
+        color: #e6ffe6;
+        font-weight: bold;
+    }
+    #subject_link:hover{
+        text-decoration: underline;
+    }
+
+    ul{
+        padding-left: 20px;
+    }
+
+    ul li{
+        padding: 10px;
+        border-radius: 8px;
+    }
+
+    #menu_list{
+        list-style: none;
+        padding-left: 20px;
+    }
+
+    #menu_list li{
+        padding: 10px;
+        border-radius: 8px;
+    }
+
+    #menu_list li:hover{
+        border-bottom: 2px solid #d4f5d4;
+        background-color: #a2ff0077;
+    }
+
+    body {
+            background-color: #d4f5d4;
+            margin: 0;
+        }
+    img{
+        height: 70px;
+        width: 70px;
+    }
+    #menu_button{
+        height: 30px;
+        width: 30px;
+    }
+    
+    #close_menu_button{
+        height: 30px;
+        width: 30px;
+    }
+
+    #hidden_menu{
+        z-index: 1;
+        background-color: #556b2f;
+        transform: translateX(-320px);
+        transition: all 0.5s ease;
+    }
+
+
+    .heading{
+        color: #556b2f;
+        font-size: 30px;
+    }
+
+
+
+    .videocard{
+        overflow-y: hidden;
+        overflow-x: hidden;
+        width: 90%;
+        border-radius: 10px;
+        text-align: justify;
+        text-justify: inter-word;
+        margin-bottom: 40px;
+    }
+
+    @media screen and (min-width:700px) and (max-width: 900px) {
+        .videocard{
+            width: 32%;
+        }
+        
+    }
+    @media screen and (min-width: 901px) {
+        .videocard{
+            width: 24%;
+        }
+    }
+</style>
+<body>
+    <div id="hidden_menu" style="width: 300px; height: 100%; position: absolute; padding: 10px;">
+        <div style="display: flex; justify-content: space-between; align-items: center;">    
+            <img th:src="@{/images/logo.png}">
+            <img id="close_menu_button" th:src="@{/images/cancel_10486799.png}">
+        </div>
+        <ul id="menu_list">
+            <li><a target="_blank" th:href="@{/gate}">GATE Prepration</a></li>
+            <li><a>Semester Prepration</a></li>
+            <li><a target="_blank" tg:href="@{/feedback}">Feedback</a></li>
+        </ul>   
+    </div>
+    <div  style="padding-bottom: 20px;position: absolute; width: 100%; height: fit-content; z-index: 0; align-items: center;display: flex; flex-direction: column;"> 
+        <nav style="display: flex; width: 100%; background-color: #556b2f77; padding: 8px; padding-top: 10px; border-bottom: 2px solid black; justify-content: space-between; align-items: center;">    
+            <span style="display: flex; flex-direction: row; padding: 8px; align-items: center;">
+                <a th:href="@{/home}"><img style="margin-left: 20px;" th:src="@{/images/logo.png}"></a>
+                <h3 style="margin-left: 10px; font-size: 28px; font-family:'Copperplate', Copperplate Gothic Light, Copperplate Gothic Bold, serif; font-weight: 700;">SHERU</h3>
+            </span>
+            <img id="menu_button" style="margin-right: 20px; padding: 8px;" th:src="@{/images/Hamburger_icon.svg.png}">
+        </nav>
+        <h2 class="heading">
+            One-Shot Video Playlist for All Subjects
+        </h2>
+        <div style="display: flex; flex-direction: row; align-items: center;">
+            <label for="choice" style="font-weight: 400; font-size: 18px;">Subject:&nbsp;&nbsp;</label>
+                <select name="choice" id="choice" style="padding: 5px; width: 200px;">
+                    <option value="All">All</option>
+                    <option value="Engg Maths">Engineering Maths</option>
+                    <option value="Discreate Maths">Discreate Maths</option>
+                    <option value="C Programming">C Programming</option>
+                    <option value="Algorithms">Algorithm</option>
+                    <option value="Digital Electronics">Digital Electronics</option>
+                    <option value="COA">COA</option>
+                    <option value="DBMS">DBMS</option>
+                    <option value="Operating System">Operating System</option>
+                    <option value="Computer Network">Computer Network</option>
+                    <option value="TOC">Theory Of Computing</option>
+                    <option value="Compiler Design">Compiler Design</option>
+                </select>
+        </div>
+        <div class="videos_container"  style="width: 100%; display: flex; flex-direction: row;flex-wrap: wrap; justify-content: space-evenly; margin-top: 50px;">
+        </div>
+            
+
+
+
+
+    </div>
+    <footer style="position: fixed;bottom: 0;background-color: #556b2f77; display: flex; justify-content: center; align-items: center; width: 100%; height: 20px;">
+            <h5 style="margin: 0;">contact us @8630984049</h5>
+    </footer>
+</body>
+<script>
+    let trigger_menu_button = document.getElementById("menu_button");
+    let hidden_menu_to_be_shown = document.getElementById("hidden_menu");
+
+    trigger_menu_button.addEventListener('click', (e) => {
+        hidden_menu_to_be_shown.style.transform = "translateX(0px)";
+    });
+
+    let close_button = document.getElementById("close_menu_button");
+    close_button.addEventListener('click', (e) => {
+        hidden_menu_to_be_shown.style.transform = "translateX(-320px)"
+    });
+
+
+    const Container = document.querySelector(".videos_container");
+    const apiURL = "/api/v0/data/CSE";
+    function addvideo(){
+        fetch(apiURL)
+        .then(response => response.json())
+        .then(data => {
+        data.forEach(element => {
+            const newVideo = document.createElement('div');
+            newVideo.className = "videocard";
+            newVideo.innerHTML = `<a href=${element.link} target="_blank">
+                    <img src="https://img.youtube.com/vi/${element.video_Id}/sddefault.jpg" 
+                    alt="YouTube Thumbnail" 
+                    style="width: 100%; height: auto; border-radius: 10px;">
+                </a>
+                <h4 style="margin: 0;">${element.name}</h4>
+                <h5 style="margin: 0; font-weight: 300;">${element.publisher}</h5>`;
+            Container.appendChild(newVideo);         
+        });
+        })
+        .catch(error => {
+            console.error("Error:", error);
+        });
+    }
+    addvideo();
+
+    document.getElementById("choice").addEventListener('change', () => {
+        Container.innerHTML = "";
+        let subject = document.getElementById("choice").value;
+        fetch(apiURL)
+        .then(response => response.json())
+        .then(data => {
+        data.forEach(element => {
+            if(subject == "All" || element.subject == subject || element.subject == "All"){
+            const newVideo = document.createElement('div');
+            newVideo.className = "videocard";
+            newVideo.innerHTML = `<a href=${element.link} target="_blank">
+                    <img src="https://img.youtube.com/vi/${element.video_Id}/sddefault.jpg" 
+                    alt="YouTube Thumbnail" 
+                    style="width: 100%; height: auto; border-radius: 10px;">
+                </a>
+                <h4 style="margin: 0;">${element.name}</h4>
+                <h5 style="margin: 0; font-weight: 300;">${element.publisher}</h5>`;
+            Container.appendChild(newVideo);         
+            }
+        });
+        })
+        .catch(error => {
+            console.error("Error:", error);
+        });
+
+    });
+</script>
+
+</html>

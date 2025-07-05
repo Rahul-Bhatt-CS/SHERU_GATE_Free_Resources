@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>New Video CSE Form</title>
+<style>
+    *{
+        font-family: calibri;
+        overflow-x: hidden;
+    }
+
+    a{
+        text-decoration: none;
+        color: #e6ffe6;
+        font-weight: bold;
+    }
+    #subject_link:hover{
+        text-decoration: underline;
+    }
+
+    ul{
+        padding-left: 20px;
+    }
+
+    ul li{
+        padding: 10px;
+        border-radius: 8px;
+    }
+
+    #menu_list{
+        list-style: none;
+        padding-left: 20px;
+    }
+
+    #menu_list li{
+        padding: 10px;
+        border-radius: 8px;
+    }
+
+    #menu_list li:hover{
+        border-bottom: 2px solid #d4f5d4;
+        background-color: #a2ff0077;
+    }
+
+    body {
+            background-color: #d4f5d4;
+            margin: 0;
+        }
+    img{
+        height: 70px;
+        width: 70px;
+    }
+    #menu_button{
+        height: 30px;
+        width: 30px;
+    }
+    
+    #close_menu_button{
+        height: 30px;
+        width: 30px;
+    }
+
+    #hidden_menu{
+        z-index: 1;
+        background-color: #556b2f;
+        transform: translateX(-320px);
+        transition: all 0.5s ease;
+    }
+
+
+
+
+
+
+
+    
+    form {
+        margin-top: 18px;
+        width: 80%;
+      background-color: #fff;
+      padding: 20px 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    label {
+      display: block;
+      margin: 12px 0 6px;
+    }
+    input[type="text"] {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #aaa;
+      border-radius: 5px;
+    }
+    button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      background-color: #0077cc;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #005fa3;
+    }
+  </style>
+</head>
+<body>
+    <div id="hidden_menu" style="width: 300px; height: 100%; position: absolute; padding: 10px;">
+        <div style="display: flex; justify-content: space-between; align-items: center;">    
+            <img th:src="@{/images/logo.png}">
+            <img id="close_menu_button" th:src="@{/images/cancel_10486799.png}">
+        </div>
+        <ul id="menu_list">
+            <li><a target="_blank" th:href="@{/gate}">GATE Prepration</a></li>
+            <li><a>Semester Prepration</a></li>
+            <li><a target="_blank" th:href="@{/feedback}">Feedback</a></li>
+        </ul>   
+    </div>
+    <div  style="padding-bottom: 20px;position: absolute; width: 100%; height: fit-content; z-index: 0; align-items: center;display: flex; flex-direction: column;"> 
+        <nav style="display: flex; width: 100%; background-color: #556b2f77; padding: 8px; padding-top: 10px; border-bottom: 2px solid black; justify-content: space-between; align-items: center;">    
+            <span style="display: flex; flex-direction: row; padding: 8px; align-items: center;">
+                <a th:href="@{/home}"><img style="margin-left: 20px;" th:src="@{/images/logo.png}"></a>
+                <h3 style="margin-left: 10px; font-size: 28px; font-family:'Copperplate', Copperplate Gothic Light, Copperplate Gothic Bold, serif; font-weight: 700;">SHERU</h3>
+            </span>
+            <img id="menu_button" style="margin-right: 20px; padding: 8px;" th:src="@{/images/Hamburger_icon.svg.png}">
+        </nav>
+
+        <form id="submition_form">
+            <h2>Help create a better experience</h2>
+            <label for="input1">Video Link*(if it is not a videoCSE then enter the link to Website)</label>
+            <input type="text" id="input1" name="input1" required>
+
+            <label for="input2">Video Id(enter only for YT Video)</label>
+            <input type="text" id="input2" name="input2" >
+
+            <label for="input3">Description (name)*</label>
+            <input type="text" id="input3" name="input3" required>
+
+            <label for="input4">Publisher*</label>
+            <input type="text" id="input4" name="input4" required>
+
+        <div style="display: flex; flex-direction: row; align-items: center;">
+            <label for="input6" style="font-weight: 400; font-size: 18px;">Subject:&nbsp;&nbsp;</label>
+                <select name="input6" id="input6" style="padding: 5px; width: 200px;" required>
+                    <option value="All">All</option>
+                    <option value="Engg Maths">Engineering Maths</option>
+                    <option value="Networks, Signals and Systems">Networks, Signals and Systems</option>
+                    <option value="Electronic Devices">Electronic Devices</option>
+                    <option value="Analog Circuitss">Analog Circuits</option>
+                    <option value="Digital Circuits">Digital Circuits</option>
+                    <option value="Control Systems">Control Systems</option>
+                    <option value="Communications">Communications</option>
+                    <option value="Electro magnetics">Electro magnetics</option>
+                   </select>
+        </div>
+            <button type="submit">Submit</button>
+        </form>
+
+
+
+    </div>
+    <footer style="position: fixed;bottom: 0;background-color: #556b2f77; display: flex; justify-content: center; align-items: center; width: 100%; height: 20px;">
+            <h5 style="margin: 0;">contact us @8630984049</h5>
+    </footer>
+</body>
+<script>
+    let trigger_menu_button = document.getElementById("menu_button");
+    let hidden_menu_to_be_shown = document.getElementById("hidden_menu");
+
+    trigger_menu_button.addEventListener('click', (e) => {
+        hidden_menu_to_be_shown.style.transform = "translateX(0px)";
+    });
+
+    let close_button = document.getElementById("close_menu_button");
+    close_button.addEventListener('click', (e) => {
+        hidden_menu_to_be_shown.style.transform = "translateX(-320px)"
+    });
+
+    document.getElementById("submition_form").addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const link = document.getElementById("input1").value;
+        const video_Id = document.getElementById("input2").value;
+        const name = document.getElementById("input3").value;
+        const publisher = document.getElementById("input4").value;
+        const subject = document.getElementById("input6").value;
+
+        const jsonData = {video_Id, link, name, publisher, subject};
+        const apiURL = "/api/v0/data/ECE";
+        fetch(apiURL, {
+        method: "POST",
+         headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(jsonData)
+        })
+        .then(response => response.json())
+        .then(data => {
+        console.log("Success:", data);
+        document.getElementById("submition_form").reset();
+        })
+        .catch(error => {
+            console.error("Error:", error);
+        });
+    });
+
+</script>
+</html>

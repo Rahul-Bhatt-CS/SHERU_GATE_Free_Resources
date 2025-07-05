@@ -1,0 +1,198 @@
+<!DOCTYPE html >
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SHERU</title>
+</head>
+<style>
+    *{
+        font-family: calibri;
+        overflow-x: hidden;
+    }
+
+    a{
+        text-decoration: none;
+        color: #e6ffe6;
+        font-weight: bold;
+    }
+
+    ul{
+        list-style: none;
+        padding-left: 20px;
+    }
+
+    ul li{
+        padding: 10px;
+        border-radius: 8px;
+    }
+
+    ul li:hover{
+        border-bottom: 2px solid #d4f5d4;
+        background-color: #a2ff0077;
+    }
+
+    body {
+            background-color: #d4f5d4;
+            margin: 0;
+        }
+    img{
+        height: 70px;
+        width: 70px;
+    }
+    #menu_button{
+        height: 30px;
+        width: 30px;
+    }
+    
+    #close_menu_button{
+        height: 30px;
+        width: 30px;
+    }
+
+    #hidden_menu{
+        z-index: 1;
+        background-color: #556b2f;
+        transform: translateX(-320px);
+        transition: all 0.5s ease;
+    }
+
+    #welcome_text{
+        margin: 0;
+        font-size: 40px;
+      font-weight: bold;
+      color: #006400; 
+    }
+    #free_text{
+        margin: 0;
+      font-size: 40px;
+      font-weight: bold;
+      color: lightcoral;
+    }
+    #description_text{
+        font-size: 13px;
+    }
+    #button_pointing_text{
+        font-size:15px
+    }
+
+    .enrollment_button {
+  background-color: #4CAF50; /* Green */
+  color: white;
+  width: 100px;
+  height: 40px;
+  padding: 2px 7px;
+  margin-left: 10px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 13px;
+  transition: background-color 0.3s ease;
+}
+
+.enrollment_button:hover {
+  background-color: #45a049;
+}
+
+    @media screen and (min-width: 700px) and (max-width: 900px){
+        #free_text{
+            font-size: 55px;
+        }        
+        #welcome_text{
+            font-size: 55px;
+        }
+        #description_text{
+            font-size: 16px;
+        }
+        #button_pointing_text{
+            font-size:18px
+        }
+        .enrollment_button{
+            width: 150px;
+            padding: 5px 10px;
+            font-size: 16px;
+        }
+    }
+
+    @media screen and (min-width: 901px){
+        #free_text{
+            font-size: 70px;
+        }        
+        #welcome_text{
+            font-size: 70px;
+        }
+        #description_text{
+            font-size: 16px;
+        }
+        #button_pointing_text{
+            font-size:18px
+        }
+        .enrollment_button{
+            width: 200px;
+            padding: 5px 10px;
+            font-size: 16px;
+        }
+    }
+
+    
+
+</style>
+<body>
+    <div id="hidden_menu" style="width: 300px; height: 100%; position: absolute; padding: 10px;">
+        <div style="display: flex; justify-content: space-between; align-items: center;">    
+            <img th:src="@{/images/logo.png}">
+            <img id="close_menu_button" th:src="@{/images/cancel_10486799.png}">
+        </div>
+        <ul>
+            <li><a target="_blank" th:href="@{/gate}">GATE Prepration</a></li>
+            <li><a>Semester Prepration</a></li>
+            <li><a target="_blank" th:href="@{/feedback}">Feedback</a></li>
+        </ul>   
+    </div>
+    <div  style="padding-bottom: 20px;position: absolute; width: 100%; height: fit-content; z-index: 0; align-items: center;display: flex; flex-direction: column;"> 
+        <nav style="display: flex; width: 100%; background-color: #556b2f77; padding-top: 10px; border-bottom: 2px solid black; justify-content: space-between; align-items: center;">    
+            <span style="display: flex; flex-direction: row; align-items: center; padding: 8px;">
+                <a th:href="@{/home}"><img style="margin-left: 20px;" th:src="@{/images/logo.png}"></a>
+                <h3 style="margin-left: 10px; font-size: 28px; font-family:'Copperplate', Copperplate Gothic Light, Copperplate Gothic Bold, serif; font-weight: 700;">SHERU</h3>
+            </span>
+            <img id="menu_button" style="margin-right: 20px; padding: 8px;" th:src="@{/images/Hamburger_icon.svg.png}">
+        </nav> 
+        <div style="width: 90%; margin-left: 10%;margin-top: 100px;">
+            <h1 id="welcome_text">Get Exam Ready</h1>
+            <span style="display: flex; flex-direction: row;"><h1 id="welcome_text">For&nbsp;</h1><h1 id="free_text">Free!</h1></span>
+        </div>
+        <div style=" width: 80%; margin-left: 0;">
+            <p id="description_text"><span style="font-weight: bold;">Welcome to Sheru – Your One-Stop Hub for Free GATE and B.Tech Semester Resources!</span><br>
+            Sheru is a dedicated platform built to help B.Tech students access all free 
+            and high-quality resources for their GATE preparation and semester exams.<br>
+            We believe education should be accessible to all, 
+            so every resource shared here is completely free and carefully curated from trusted sources. 
+            Stay ahead with regularly updated content, smart categorization by branches and subjects,
+            and tools to make your study planning easier and more effective</p>
+        </div>
+        <div class="get_started" style="display: flex; width: 90%; margin-left: 10%; flex-direction: row; align-items: center;">
+            <h3 id="button_pointing_text">Get Started Now:</h3>
+            <a target="_blank" th:href="@{/gate}"><button class="enrollment_button" id="redirect_to_gate">GATE</button></a>
+            <a><button class="enrollment_button">SEMESTER EXAM</button></a>
+        </div>
+        
+
+    </div>
+    <footer style="position: fixed;bottom: 0;background-color: #556b2f77; display: flex; justify-content: center; align-items: center; width: 100%; height: 20px;">
+            <h5 style="margin: 0;">contact us @8630984049</h5>
+    </footer>
+</body>
+<script th:inline="javascript">
+    let trigger_menu_button = document.getElementById("menu_button");
+    let hidden_menu_to_be_shown = document.getElementById("hidden_menu");
+
+    trigger_menu_button.addEventListener('click', (e) => {
+        hidden_menu_to_be_shown.style.transform = "translateX(0px)";
+    });
+
+    let close_button = document.getElementById("close_menu_button");
+    close_button.addEventListener('click', (e) => {
+        hidden_menu_to_be_shown.style.transform = "translateX(-320px)"
+    });
+</script>
+</html>

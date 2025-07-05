@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GATE EXAM: Eligibility, Syllabus and Prepration</title>
+</head>
+<style>
+    *{
+        font-family: calibri;
+        overflow-x: hidden;
+    }
+
+    a{
+        text-decoration: none;
+        color: #e6ffe6;
+        font-weight: bold;
+    }
+    #subject_link:hover{
+        text-decoration: underline;
+    }
+
+    ul{
+        padding-left: 20px;
+    }
+
+    ul li{
+        padding: 10px;
+        border-radius: 8px;
+    }
+
+    #menu_list{
+        list-style: none;
+        padding-left: 20px;
+    }
+
+    #menu_list li{
+        padding: 10px;
+        border-radius: 8px;
+    }
+
+    #menu_list li:hover{
+        border-bottom: 2px solid #d4f5d4;
+        background-color: #a2ff0077;
+    }
+
+    body {
+            background-color: #d4f5d4;
+            margin: 0;
+        }
+    img{
+        height: 70px;
+        width: 70px;
+    }
+    #menu_button{
+        height: 30px;
+        width: 30px;
+    }
+    
+    #close_menu_button{
+        height: 30px;
+        width: 30px;
+    }
+
+    #hidden_menu{
+        z-index: 1;
+        background-color: #556b2f;
+        transform: translateX(-320px);
+        transition: all 0.5s ease;
+    }
+
+
+
+
+    .heading{
+        color: #556b2f;
+        font-size: 30px;
+    }
+    .subheading{
+        color: #556b2f;
+        font-size: 25px;
+        font-weight: 400;
+        margin-top: 0;
+    }
+    .description{
+        font-weight: 300;
+        text-align: justify;
+        text-justify: inter-word;
+    }
+    .highlight{
+        font-weight: 700;
+    }
+
+    table,th,td{
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+    th,td{
+        width: 50%;
+        padding: 10px;
+    }
+</style>
+<body>
+    <div id="hidden_menu" style="width: 300px; height: 100%; position: absolute; padding: 10px;">
+        <div style="display: flex; justify-content: space-between; align-items: center;">    
+            <img th:src="@{/images/logo.png}">
+            <img id="close_menu_button" th:src="@{/images/cancel_10486799.png}">
+        </div>
+        <ul id="menu_list">
+            <li><a target="_blank" th:href="@{/gate}">GATE Prepration</a></li>
+            <li><a>Semester Prepration</a></li>
+            <li><a target="_blank" th:href="@{/feedback}">Feedback</a></li>
+        </ul>   
+    </div>
+    <div  style="padding-bottom: 20px ;position: absolute; width: 100%; height: fit-content; z-index: 0; align-items: center;display: flex; flex-direction: column;"> 
+        <nav style="display: flex; width: 100%; background-color: #556b2f77; padding: 8px; padding-top: 10px; border-bottom: 2px solid black; justify-content: space-between; align-items: center;">    
+            <span style="display: flex; flex-direction: row; padding: 8px; align-items: center;">
+                <a th:href="@{/home}"><img style="margin-left: 20px;" th:src="@{/images/logo.png}"></a>
+                <h3 style="margin-left: 10px; font-size: 28px; font-family:'Copperplate', Copperplate Gothic Light, Copperplate Gothic Bold, serif; font-weight: 700;">SHERU</h3>
+            </span>
+            <img id="menu_button" style="margin-right: 20px; padding: 8px;" th:src="@{/images/Hamburger_icon.svg.png}">
+        </nav>
+        <div style="width: 80%;margin-top: 50px;">    
+            <h2 class="heading">Graduate Aptitude Test in Engineering (GATE)</h2>
+            <h3 class="subheading">What is GATE EXAM?</h3>
+            <h4 class="description"><span class="highlight">Graduate Aptitude Test in Engineering (GATE)</span> is an examination which is conducted for 
+                Master of Engineering (ME), Master of Technology (MTech) and direct PhD admissions to Indian Institutes of Technology 
+                (IITs), National Institutes of Technology (NITs), Indian Institutes of Information Technology (IIITs) and other
+                institutes/universities across India. It also opens the gateway to booming Public Sector Undertaking Companies (PSUs) 
+                and in the field of research. Some of the PSUs and research organizations which use <span class="highlight">GATE scores</span> for providing jobs 
+                include ONGC, NTPC, GAIL, HPCL, PGCIL, BHEL, BSNL, NHPC, BARC, DRDO, etc.</h4>
+            <h4 class="description">GATE is an All-India examination administered and conducted in eight 
+                zones across the country by the GATE Committee comprising faculty members from IISc, 
+                Bangalore and other seven IIT’s on behalf of the National Coordination Board (NCB), 
+                Department of Higher Education, Ministry of Education (MoE), Government of India.</h4>
+
+            <h3 class="subheading">NEW IN GATE 2026!</h3>
+            <ul class="description">
+                <li><span class="highlight">Two new subjects</span> – Geomatics Engineering (GE) and Naval Architecture and Marine Engineering (NM). The total number of subjects has increased to 30.</li>
+                <li>In another newly introduced change, students applying for GATE EXAM 2026 can also opt for two different papers from the prescribed set of combinations.</li>
+                <li>Eligibility criteria to appear for GATE-2026 is relaxed from the minimum 10+2+4 (ongoing) to minimum 10+2+3 (ongoing), enabling even those in the third year of their undergraduate studies to appear for the examination, thus providing an additional opportunity to candidates to improve their performance to secure better career options.</li>
+                <li>All test papers of <span class="highlight">GATE EXAM 2026 will be entirely objective type</span>. Pattern of questions may include (i) Multiple Choice Questions (MCQ), (ii) Multiple Select Questions (MSQ), and/or (iii) Numerical Answer Type (NAT) questions.</li>
+            </ul>
+            <h3 class="subheading">Syllabus</h3>
+            <table style="width: 100%;">
+                <tr>
+                    <th>PAPER</th>
+                    <th>LINK</th>
+                </tr>
+                <tr>
+                    <td>CS & IT</td>
+                    <td><a id="subject_link" style="color: blue;" th:href="@{/Syllabus/GATE_CS_2025_Syllabus.pdf}" download>GATE CS/IT Syllabus</a></td>
+                </tr>
+                </tr>
+                <tr>
+                    <td>ECE</td>
+                    <td><a id="subject_link" style="color: blue;" target="_blank" th:href="@{/Syllabus/GATE_EC_2025_Syllabus.pdf}" download>GATE EC Syllabus</a></td>
+                </tr>
+            </table>
+            <h3 class="subheading">Resources:</h3>
+            <table style="width: 100%;">
+                <tr>
+                    <th>PAPER</th>
+                    <th>LINK</th>
+                </tr>
+                <tr>
+                    <td>CS & IT</td>
+                    <td><a id="subject_link" style="color: blue;" th:href="@{/v0/gatecse}">GATE CSE Free Resources</a></td>
+                </tr>
+                </tr>
+                <tr>
+                    <td>ECE</td>
+                    <td><a id="subject_link" style="color: blue;" th:href="@{/v0/gateece}">GATE ECE Free Resources</a></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <footer style="position: fixed;bottom: 0;background-color: #556b2f77; display: flex; justify-content: center; align-items: center; width: 100%; height: 20px;">
+            <h5 style="margin: 0;">contact us @8630984049</h5>
+    </footer>
+</body>
+<script>
+    let trigger_menu_button = document.getElementById("menu_button");
+    let hidden_menu_to_be_shown = document.getElementById("hidden_menu");
+
+    trigger_menu_button.addEventListener('click', (e) => {
+        hidden_menu_to_be_shown.style.transform = "translateX(0px)";
+    });
+
+    let close_button = document.getElementById("close_menu_button");
+    close_button.addEventListener('click', (e) => {
+        hidden_menu_to_be_shown.style.transform = "translateX(-320px)"
+    });
+</script>
+
+</html>
